@@ -1,13 +1,26 @@
 ﻿using Application.IServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Domain.Models;
+using Infradata.IRepositorys;
 
 namespace Application.Services
 {
     public class UsuariosService : IUsuariosService
     {
+        private readonly IUsuariosRepository _usuarioRepository;
+
+        public UsuariosService(IUsuariosRepository usuarioRepository)
+        {
+            _usuarioRepository = usuarioRepository;
+        }
+
+        public async Task<IEnumerable<Usuario>> ObtemUsuarios()
+        {
+            return await _usuarioRepository.Get();
+        }
+
+        public async Task<int> InserirUsuario(Usuario usuario)
+        {
+            return await _usuarioRepository.Insert(usuario);
+        }
     }
 }

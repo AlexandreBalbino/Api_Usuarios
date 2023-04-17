@@ -9,6 +9,6 @@ namespace Infradata
         {
         }
 
-        public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
     }
 }
