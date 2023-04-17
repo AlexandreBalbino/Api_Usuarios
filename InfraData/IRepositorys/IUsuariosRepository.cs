@@ -7,6 +7,7 @@ namespace Infradata.IRepositorys
         Task<IEnumerable<Usuario>> Get();
         Task<int> Insert(Usuario usuarios);
         Task Update(Usuario usuarios);
+        Task<Usuario> GetById(int id);
         Task Delete(int id);
     }
 }

@@ -22,5 +22,15 @@ namespace Application.Services
         {
             return await _usuarioRepository.Insert(usuario);
         }
+
+        public async Task AtualizarUsuario(Usuario usuario)
+        { 
+            await _usuarioRepository.Update(usuario);
+        }
+
+        public async Task DeletarUsuario(int id)
+        {
+            await _usuarioRepository.Delete(id);
+        }
     }
 }

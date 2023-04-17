@@ -19,16 +19,24 @@ namespace Infradata.Repositorys
         {
             return await _table.ToListAsync();
         }
-        public async Task<int> Insert(Usuario usuarios)
+        
+        public async Task<Usuario> GetById(int id)
         {
-            await _table.AddAsync(usuarios);
-            await _context.SaveChangesAsync();
-            return usuarios.Id;
+            var obj = await _table.FindAsync(id);
+            if (obj == null) { throw new Exception("Not found entity"); }
+            return obj;
         }
-        public async Task Update(Usuario usuarios)
+
+        public async Task<int> Insert(Usuario usuario)
         {
-            _table.Attach(usuarios);
-            _context.Entry(usuarios).State = EntityState.Modified;
+            await _table.AddAsync(usuario);
+            await _context.SaveChangesAsync();
+            return usuario.Id;
+        }
+        public async Task Update(Usuario usuario)
+        {
+            _table.Attach(usuario);
+            _context.Entry(usuario).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
         public async Task Delete(int id)
