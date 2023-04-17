@@ -1,7 +1,7 @@
 ﻿using Application.IServices;
 using Application.Services;
 
-namespace Api_Usuarios.Configurations
+namespace ApiUsuarios.Configurations
 {
     public  static class ServicesRepositorys
     {

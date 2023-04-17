@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InfraData.IRepositorys
+namespace Infradata.IRepositorys
 {
     public interface IUsuariosRepository
     {

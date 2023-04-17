@@ -1,7 +1,7 @@
-﻿using InfraData.IRepositorys;
-using InfraData.Repositorys;
+﻿using Infradata.IRepositorys;
+using Infradata.Repositorys;
 
-namespace Api_Usuarios.Configurations
+namespace ApiUsuarios.Configurations
 {
     public static class RepositorysConfiguration
     {

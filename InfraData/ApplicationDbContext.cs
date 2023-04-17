@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace InfraData
+namespace Infradata
 {
     public class ApplicationDbContext : DbContext
     {
@@ -8,6 +9,6 @@ namespace InfraData
         {
         }
 
-         
+        public DbSet<Usuarios> Usuarios { get; set; }
     }
 }
