@@ -72,7 +72,7 @@ namespace ApiUsuarios.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(void))]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
-        public async Task<ObjectResult> DeletarUsuario([FromBody] int id)
+        public async Task<ObjectResult> DeletarUsuario([FromRoute] int id)
         {
             try
             {
