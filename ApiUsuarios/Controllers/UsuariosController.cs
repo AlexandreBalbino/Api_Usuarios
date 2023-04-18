@@ -1,5 +1,6 @@
 ﻿using Application.IServices;
 using Domain.Models;
+using Domain.Resposta;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -36,14 +37,14 @@ namespace ApiUsuarios.Controllers
         }
 
         [HttpPost()]
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(int))]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(Resposta<int>))]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<ObjectResult> InserirUsuario([FromBody] Usuario usuario)
         {
             try
             {
                 var resultado = await _usuariosService.InserirUsuario(usuario);
-                return Ok(resultado);
+                return Ok(new Resposta<int>(resultado));
             }
             catch (Exception ex)
             {
@@ -53,14 +54,14 @@ namespace ApiUsuarios.Controllers
         }
 
         [HttpPut()]
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(void))]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(Resposta<string>))]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<ObjectResult> AtualizarUsuario([FromBody] Usuario usuario)
         {
             try
             {
                 await _usuariosService.AtualizarUsuario(usuario);
-                return Ok("Atualizado com sucesso!");
+                return Ok(new Resposta<string>("Atualizado com sucesso!"));
             }
             catch (Exception ex)
             {
@@ -70,14 +71,14 @@ namespace ApiUsuarios.Controllers
         }
 
         [HttpDelete("{id}")]
-        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(void))]
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(Resposta<string>))]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public async Task<ObjectResult> DeletarUsuario([FromRoute] int id)
         {
             try
             {
                 await _usuariosService.DeletarUsuario(id);
-                return Ok("Usuario deletado!");
+                return Ok(new Resposta<string>("Usuario deletado!"));
             }
             catch (Exception ex)
             {
