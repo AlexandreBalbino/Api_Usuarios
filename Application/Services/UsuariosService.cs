@@ -20,12 +20,23 @@ namespace Application.Services
 
         public async Task<int> InserirUsuario(Usuario usuario)
         {
+            ValidarData(usuario);
             return await _usuarioRepository.Insert(usuario);
         }
 
         public async Task AtualizarUsuario(Usuario usuario)
-        { 
+        {
+            ValidarData(usuario);
             await _usuarioRepository.Update(usuario);
+        }
+
+        private static void ValidarData(Usuario usuario)
+        {
+            var dataMaxima = DateTime.Now.Date.AddDays(1);
+            if (usuario.DataNascimento > dataMaxima)
+            {
+                throw new ArgumentException("Data maior que a atual");
+            }
         }
 
         public async Task DeletarUsuario(int id)

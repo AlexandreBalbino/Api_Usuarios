@@ -32,7 +32,7 @@ namespace ApiUsuarios.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Ocorreu um erro ao obter usuarios");
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
+                return BadRequest("Erro ao obter usuarios");
             }
         }
 
@@ -49,7 +49,7 @@ namespace ApiUsuarios.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Ocorreu um erro ao inserir usuario");
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
+                return BadRequest("Erro ao inserir usuario");
             }
         }
 
@@ -66,7 +66,7 @@ namespace ApiUsuarios.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Ocorreu um erro ao atualizar usuario");
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
+                return BadRequest("Erro ao atualizar usuario");
             }
         }
 
@@ -83,7 +83,7 @@ namespace ApiUsuarios.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Ocorreu um erro ao deletar usuario");
-                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
+                return BadRequest("Erro ao deletar usuario");
             }
         }
 
